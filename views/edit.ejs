@@ -1,0 +1,88 @@
+<%- include('./partials/head.ejs') %>
+
+<h1>Now Editing: <%= recipe.name %></h1>
+
+<main>
+<form action="/book/<%= recipe.category%>/<%= recipe.id %>?_method=PUT" method="POST">
+    <div>
+        Name: <input type="text" name="name" id="name" value="<%= recipe.name %>"><br>
+    </div>
+    <div>
+        Category: <br>
+        <input type="radio" name="category" id="current" value="<%=recipe.category %>" checked>
+        <label for="current">Currently: <%= recipe.category %></label><br>
+        <input type="radio" name="category" id="entrees" value="entrees">
+        <label for="entrees">Entrees</label><br>
+        <input type="radio" name="category" id="sides/apps" value="sides/apps">
+        <label for="sides/apps">Sides and Appetizers</label><br>
+        <input type="radio" name="category" id="breakfast" value="breakfast">
+        <label for="breakfast">Breakfast</label><br>
+        <input type="radio" name="category" id="treats" value="treats">
+        <label for="treats">Treats</label><br>
+        <input type="radio" name="category" id="misc" value="misc">
+        <label for="misc">Misc</label><br>
+    </div>
+
+    <div id="ingredients">
+        Ingredients: <br>
+        <% for(let i = 0; i < recipe.ingredients.length; i++) { %>
+            <li><%= recipe.ingredients[i] %></li>
+        <% } %>
+    </div>
+    <button type="button" id="addIngredient">Add Ingredient</button>
+
+    <div id="steps">
+        Instructions: <br>
+        <% for(let i = 0; i < recipe.steps.length; i++) { %>
+            <li><%= recipe.steps[i] %></li>
+        <% } %>
+    </div>
+    <button type="button" id="addStep">Add Step</button>
+
+    <div id="images">
+        Images: <br>
+        <% for(let i = 0; i < recipe.images.length; i++) { %>
+            <img src="<%= recipe.images[i] %>" alt="image of <%= recipe.name %>">
+        <% } %>    </div>
+    <button type="button" id="addImage">Add URL</button>
+
+    <div>
+        Tags (separated by a comma): <br>
+        <input type="text" name="tags" id="tags" value="<%= recipe.tags %>">
+    </div>
+
+    <div><input type="submit" value="Edit"></div>
+    
+</form>
+
+</main>
+<script>
+    const addIngredientButton = document.getElementById('addIngredient');
+    const addStepButton = document.getElementById('addStep');
+    const addImgButton = document.getElementById('addImage');
+
+    addIngredientButton.addEventListener('click', () => {
+        const container = document.getElementById('ingredients');
+        const newInput = document.createElement('div');
+        newInput.innerHTML = '<input type="text" name="ingredients" id="ingredients"><br>';
+        container.appendChild(newInput);
+    });
+
+    addStepButton.addEventListener('click', () => {
+        const container = document.getElementById('steps');
+        const newInput = document.createElement('div');
+        newInput.innerHTML = '<input type="text" name="steps" id="steps"><br>';
+        container.appendChild(newInput);
+    });
+
+    addImgButton.addEventListener('click', () => {
+        const container = document.getElementById('images');
+        const newInput = document.createElement('div');
+        newInput.innerHTML = '<input type="text" name="images" id="images"><br>';
+        container.appendChild(newInput);
+    });
+
+</script>
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>
