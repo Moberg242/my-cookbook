@@ -1,0 +1,27 @@
+<%- include('./partials/head.ejs') %>
+
+<h1>INDEX PAGE</h1>
+<div>SEARCH BAR</div>
+
+<main>
+<div>
+    <h3>Browse by Category:</h3>
+    <a href="/book/entrees">Entrees</a>
+    <a href="/book/sidesAndApps">Sides/Appetizers</a>
+    <a href="/book/breakfast">Breakfast</a>
+    <a href="/book/treats">Treats</a>
+    <a href="/book/misc">Misc</a>
+</div>
+<div>
+<% for(let i = 0; i < recipes.length; i++) { %>
+    <div>
+        <h5><a href="/book/<%= recipes[i].category %>/<%= recipes[i].id %>"><%= recipes[i].name %></a></h5>
+        <img src="<%= recipes[i].images[0] %>" alt="image of <%= recipes[i].name %>">
+    </div>
+<% } %>
+</div>
+</main>
+
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

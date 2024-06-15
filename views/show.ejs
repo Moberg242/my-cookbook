@@ -1,0 +1,30 @@
+<%- include('./partials/head.ejs') %>
+
+<h1><%= recipe.name %>></h1>
+
+<main>
+<aside>
+    <% for(let i = 0; i < recipe.images.length; i++) { %>
+        <img src="<%= recipe.images[i] %>" alt="image of <%= recipe.name %>">
+    <% } %>
+</aside>
+
+<ul>
+    Ingredients: 
+    <% for(let i = 0; i < recipe.ingredients.length; i++) { %>
+        <li><%= recipe.ingredients[i] %></li>
+    <% } %>
+</ul>
+
+<ol>
+    Instructions: 
+    <% for(let i = 0; i < recipe.steps.length; i++) { %>
+        <li><%= recipe.steps[i] %></li>
+    <% } %>
+</ol>
+
+</main>
+
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

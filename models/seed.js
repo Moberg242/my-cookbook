@@ -1,4 +1,4 @@
-const newRecipes = [
+const SeedData = [
     {
         name: 'Chocolate chip cookies TEST',
         category: 'Treats',
@@ -15,3 +15,4 @@ const newRecipes = [
 ]
 
 
+module.exports = SeedData

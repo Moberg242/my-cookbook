@@ -1,0 +1,19 @@
+<%- include('./partials/head.ejs') %>
+
+<h1>BROWSE BY CATEGORY</h1>
+
+<main>
+
+<div>
+<% for(let i = 0; i < recipes.length; i++) { %>
+    <div>
+        <h5><a href="/book/<%= recipes[i].category %>/<%= recipes[i].id %>"><%= recipes[i].name %></a></h5>
+        <img src="<%= recipes[i].images[0] %>" alt="image of <%= recipes[i].name %>">
+    </div>
+<% } %>
+</div>
+</main>
+
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

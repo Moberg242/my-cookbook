@@ -8,16 +8,23 @@ module.exports = router;
 //SEED
 router.get('/seed', async (req, res) => {
     try {
-        await Recipes.create(seedData);
+        await Recipes.create(SeedData);
         res.redirect('/book');
-    } catch(err) {
+    } catch (err) {
         console.log(err.message);
     }
 });
 
 //INDEX
-router.get('/', (req, res) => {
-    res.send('index');
+router.get('/', async (req, res) => {
+    try {
+        const allRecipes = await Recipes.find();
+        res.render('index.ejs', {
+            recipes: allRecipes
+        });
+    } catch (err) {
+        console.log(err.message);
+    }
 });
 
 //NEW
@@ -31,3 +38,29 @@ router.get('/', (req, res) => {
 //EDIT
 
 //SHOW
+router.get('/:category', async (req, res) => {
+    try {
+        const thisCategory = await Recipes.find({category: req.params.category});
+        res.render('browse.ejs', {
+            recipes: thisCategory
+        });
+    } catch (err) {
+        console.log(err.message);
+    }
+});
+router.get('/:category/:id', async(req, res) => {
+    try {
+        const thisRecipe = await Recipes.find({_id: req.params.id});
+        res.render('show.ejs', {
+            recipe: thisRecipe[0]
+        });
+    } catch(err) {
+        console.log(err.message);
+    }
+})
+
+// try {
+
+// } catch(err) {
+//     console.log(err.message);
+// }
