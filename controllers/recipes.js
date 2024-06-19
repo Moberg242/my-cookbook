@@ -42,10 +42,19 @@ router.delete('/:category/:id', async (req, res) => {
     }
 });
 
+
 //UPDATE
 router.put('/:category/:id', async (req, res) => {
+    // let cats = ['ingredients','steps','images','tags'];
+    // for(let i = 0; i < cats.length; i++) {
+    //     let updated = req.body[cats[i]].filter(str => /\w+/.test(str));
+    //     req.body[cats[i]] = updated;
+    // }
+    // let ing = req.body.ingredients.filter(str => /\w+/.test(str));
+    // req.body.ingredients = ing;
+    // console.log(req.body);
     try {
-        const updatedRecipe = await Recipes.findOneAndUpdate({_id: req.params.id}, {$push: {ingredients: req.body.ingredients, steps: req.body.steps}, tags: req.body.tags}, {new: true});
+        const updatedRecipe = await Recipes.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
         res.redirect(`/book/${req.params.category}/${req.params.id}`);
     } catch (err) {
         console.log(err.message);
@@ -79,7 +88,8 @@ router.get('/:category', async (req, res) => {
     try {
         const thisCategory = await Recipes.find({category: req.params.category});
         res.render('browse.ejs', {
-            recipes: thisCategory
+            recipes: thisCategory,
+            category: req.params.category
         });
     } catch (err) {
         console.log(err.message);

@@ -11,6 +11,7 @@ const mongoURI = 'mongodb+srv://moberg242:mongoDB@sebpt-319.vz9uiro.mongodb.net/
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use('/book', recipesController);
 

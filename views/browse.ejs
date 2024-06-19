@@ -1,8 +1,14 @@
 <%- include('./partials/head.ejs') %>
-
-<h1>BROWSE BY CATEGORY</h1>
+<% let cat;
+    if(category === "sidesAndApps") {
+        cat = "Sides and Appetizers"
+    } else {
+        cat = category[0].toUpperCase() + category.slice(1);
+    } %>
 
 <main>
+
+    <h1><%= cat %></h1>
 
 <div>
 <% for(let i = 0; i < recipes.length; i++) { %>
