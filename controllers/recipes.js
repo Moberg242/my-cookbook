@@ -45,16 +45,12 @@ router.delete('/:category/:id', async (req, res) => {
 
 //UPDATE
 router.put('/:category/:id', async (req, res) => {
-    // let cats = ['ingredients','steps','images','tags'];
-    // for(let i = 0; i < cats.length; i++) {
-    //     let updated = req.body[cats[i]].filter(str => /\w+/.test(str));
-    //     req.body[cats[i]] = updated;
-    // }
-    // let ing = req.body.ingredients.filter(str => /\w+/.test(str));
-    // req.body.ingredients = ing;
-    // console.log(req.body);
+    removeExtras(req.body);
     try {
         const updatedRecipe = await Recipes.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
+        // console.log(updatedRecipe);
+        // removeExtras(updatedRecipe);
+        // console.log(updatedRecipe);
         res.redirect(`/book/${req.params.category}/${req.params.id}`);
     } catch (err) {
         console.log(err.message);
@@ -63,8 +59,11 @@ router.put('/:category/:id', async (req, res) => {
 
 //CREATE
 router.post('/', async (req, res) => {
+    // console.log(req.body);
+    removeExtras(req.body);
     try {
         const newRecipe = await Recipes.create(req.body);
+        // removeExtras(newRecipe);
         res.redirect('/book');
     } catch (err) {
         console.log(err.message);
@@ -105,6 +104,25 @@ router.get('/:category/:id', async(req, res) => {
         console.log(err.message);
     }
 });
+
+function removeExtras(body) {
+    if(typeof(body.ingredients) === 'object') {
+        let ing = body.ingredients.filter(str => /\w+/.test(str));
+        body.ingredients = ing;
+    }
+    if(typeof(body.steps) === 'object') {
+        let steps = body.steps.filter(str => /\w+/.test(str));
+        body.steps = steps;
+    }
+    if(typeof(body.tags) === 'object') {
+        let tags = body.tags.filter(str => /\w+/.test(str));
+        body.tags = tags;
+    }
+    if(typeof(body.images) === 'object') {
+        let pics = body.images.filter(str => /\w+/.test(str));
+        body.images = pics;
+    }
+}
 
 //project2: https://git.generalassemb.ly/SEBPT-EC-319/project-2
 //last commit: all restful routes created and rendered

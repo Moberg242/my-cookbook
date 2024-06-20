@@ -1,9 +1,17 @@
-img {
-    max-width: 290px;
+.browse>img {
+    max-width: 300px;
+}
+
+#kitchenBackground {
+    height: 250px;
+    background-image: url("https://www.newhomesource.com/learn/wp-content/uploads/2019/09/luxury-kitchen.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0%;
 }
 
 .nav {
-    background-color: rgb(255, 245, 245);
+    background-color: rgb(55, 5, 32);
     width: 150px;
     height: 100vh;
     position: fixed;
@@ -14,10 +22,14 @@ a {
 }
 
 .browse>div {
+    display: flex;
+    flex-direction: column;
     width: 300px;
-    height: 250px;
+    height: 300px;
     border: 1px solid rgb(183, 183, 183);
     padding: 5px;
+    margin: 10px;
+    overflow: hidden;
 }
 
 .browse {
@@ -48,4 +60,8 @@ main {
     flex-direction: column;
     width: 90%;
     margin: 10px;
+}
+
+.nav-link {
+    color: rgb(149, 149, 73);
 }
