@@ -18,7 +18,7 @@ router.get('/seed', async (req, res) => {
 //INDEX
 router.get('/', async (req, res) => {
     try {
-        const allRecipes = await Recipes.find();
+        const allRecipes = await Recipes.find().sort({name: 1});
         res.render('index.ejs', {
             recipes: allRecipes
         });
@@ -48,9 +48,6 @@ router.put('/:category/:id', async (req, res) => {
     removeExtras(req.body);
     try {
         const updatedRecipe = await Recipes.findOneAndUpdate({_id: req.params.id}, req.body, {new: true});
-        // console.log(updatedRecipe);
-        // removeExtras(updatedRecipe);
-        // console.log(updatedRecipe);
         res.redirect(`/book/${req.params.category}/${req.params.id}`);
     } catch (err) {
         console.log(err.message);
@@ -59,11 +56,9 @@ router.put('/:category/:id', async (req, res) => {
 
 //CREATE
 router.post('/', async (req, res) => {
-    // console.log(req.body);
     removeExtras(req.body);
     try {
         const newRecipe = await Recipes.create(req.body);
-        // removeExtras(newRecipe);
         res.redirect('/book');
     } catch (err) {
         console.log(err.message);
@@ -84,9 +79,8 @@ router.get('/:category/:id/edit', async (req, res) => {
 
 //SHOW
 router.post('/search', async (req, res) => {
-    // res.send(req.body.searchBar);
     try {
-        const results = await Recipes.find({tags: req.body.searchBar});
+        const results = await Recipes.find({$or: [{tags: req.body.searchBar}, {name: {$options: 'i', $regex: req.body.searchBar}}, {ingredients: req.body.searchBar}]}).sort({name: 1});
         console.log(results);
         res.render('search.ejs', {
             results: results,
@@ -100,7 +94,7 @@ router.post('/search', async (req, res) => {
 
 router.get('/:category', async (req, res) => {
     try {
-        const thisCategory = await Recipes.find({category: req.params.category});
+        const thisCategory = await Recipes.find({category: req.params.category}).sort({name: 1});
         res.render('browse.ejs', {
             recipes: thisCategory,
             category: req.params.category

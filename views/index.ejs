@@ -8,7 +8,7 @@
 <h1>My Cookbook</h1>
 
 <div class="browse">
-<% for(let i = recipes.length - 1; i >= 0; i--) { %>
+<% for(let i = 0; i < recipes.length; i++) { %>
     <div>
         <h5><a href="/book/<%= recipes[i].category %>/<%= recipes[i].id %>"><%= recipes[i].name %></a></h5>
         <img src="<%= recipes[i].images[0] %>" alt="image of <%= recipes[i].name %>">
