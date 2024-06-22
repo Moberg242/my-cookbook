@@ -83,6 +83,21 @@ router.get('/:category/:id/edit', async (req, res) => {
 });
 
 //SHOW
+router.post('/search', async (req, res) => {
+    // res.send(req.body.searchBar);
+    try {
+        const results = await Recipes.find({tags: req.body.searchBar});
+        console.log(results);
+        res.render('search.ejs', {
+            results: results,
+            entry: req.body.searchBar
+        });
+    } catch(err) {
+        console.log(err.message);
+        res.send(`There are no results found for: ${req.body.searchBar}`);
+    }
+});
+
 router.get('/:category', async (req, res) => {
     try {
         const thisCategory = await Recipes.find({category: req.params.category});

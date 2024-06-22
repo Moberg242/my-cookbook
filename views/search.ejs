@@ -1,0 +1,26 @@
+<%- include('./partials/head.ejs') %>
+
+<main>
+
+<h1>Search: <%= entry %></h1>
+
+<% if(results.length < 1) { %>
+    <div class="browse">
+        There are no results found for <%= entry %>.
+    </div>
+<% } %>
+
+<div class="browse">
+    <% for(let i = 0; i < results.length; i++) { %>
+        <div>
+            <h5><a href="/book/<%= results[i].category %>/<%= results[i].id %>"><%= results[i].name %></a></h5>
+            <img class="images" src="<%= results[i].images[0] %>" alt="image of <%= results[i].name %>">
+        </div>
+    <% } %>
+    </div>
+
+</main>
+
+<%- include('./partials/footer.ejs') %>
+</body>
+</html>

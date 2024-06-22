@@ -16,7 +16,11 @@
             <a href="javascript:void(0)" class=" sidebarButton nav-link" onclick="openNav()">&#9776;</a>
             <div id="sidebarItems">
                 <li><a href="/book" class="nav-link">Home</a></li>
-                <li class="nav-link">SEARCHBAR</li>
+                <li class="nav-link"><form action="/book/search" name="search" method="POST">
+                    <input type="text" placeholder="Search.." id="searchBar" name="searchBar">
+                </form></li>
+
+                
                 <li><a href="/book/new" class="nav-link">Add new Recipe</a> </li>
                 <li class="nav-link">Browse by Category:
                     <ul>
