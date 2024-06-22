@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const recipesController = require('./controllers/recipes.js');
+const shoppingListController = require('./controllers/shoppingList.js');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use('/book', recipesController);
+app.use('/list', shoppingListController);
 
 //CONNECTTOMONGO
 async function connectToMongo() {

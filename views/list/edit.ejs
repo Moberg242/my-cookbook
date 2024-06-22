@@ -1,0 +1,40 @@
+<%- include('../partials/head.ejs') %>
+
+
+<main>
+    <h1>Edit My Shopping List</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Quantity</th>
+                <th scope="col">Measurement</th>
+                <th scope="col">Item</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let i = 0; i < items.length; i++) { %>
+                <tr>
+                    <form action="/list/edit" method="POST">
+                    <td><input type="text" name="quantity" value="<%= items[i].quantity %>"></td>
+                    <td><input type="text" name="measurement" value="<%= items[i].measurement %>"></td>
+                    <td><input type="text" name="item" value="<%= items[i].item %>"></td>
+                    <td><input type="submit" value="edit"></td>
+                </form>
+                <td><form action="/list/edit">
+                    <input type="submit" value="delete">
+                </form></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+
+
+
+</main>
+
+<%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

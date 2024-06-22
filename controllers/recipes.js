@@ -5,6 +5,7 @@ const SeedData = require('../models/seed.js');
 
 module.exports = router;
 
+
 //SEED
 router.get('/seed', async (req, res) => {
     try {
@@ -19,7 +20,7 @@ router.get('/seed', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const allRecipes = await Recipes.find().sort({name: 1});
-        res.render('index.ejs', {
+        res.render('./recipes/index.ejs', {
             recipes: allRecipes
         });
     } catch (err) {
@@ -29,7 +30,7 @@ router.get('/', async (req, res) => {
 
 //NEW
 router.get('/new', (req, res) => {
-    res.render('new.ejs');
+    res.render('./recipes/new.ejs');
 });
 
 //DELETE
@@ -69,7 +70,7 @@ router.post('/', async (req, res) => {
 router.get('/:category/:id/edit', async (req, res) => {
     try {
         const thisRecipe = await Recipes.find({_id: req.params.id});
-        res.render('edit.ejs', {
+        res.render('./recipes/edit.ejs', {
             recipe: thisRecipe[0]
         });
     } catch (err) {
@@ -81,8 +82,7 @@ router.get('/:category/:id/edit', async (req, res) => {
 router.post('/search', async (req, res) => {
     try {
         const results = await Recipes.find({$or: [{tags: req.body.searchBar}, {name: {$options: 'i', $regex: req.body.searchBar}}, {ingredients: req.body.searchBar}]}).sort({name: 1});
-        console.log(results);
-        res.render('search.ejs', {
+        res.render('./recipes/search.ejs', {
             results: results,
             entry: req.body.searchBar
         });
@@ -95,7 +95,7 @@ router.post('/search', async (req, res) => {
 router.get('/:category', async (req, res) => {
     try {
         const thisCategory = await Recipes.find({category: req.params.category}).sort({name: 1});
-        res.render('browse.ejs', {
+        res.render('./recipes/browse.ejs', {
             recipes: thisCategory,
             category: req.params.category
         });
@@ -106,7 +106,7 @@ router.get('/:category', async (req, res) => {
 router.get('/:category/:id', async(req, res) => {
     try {
         const thisRecipe = await Recipes.find({_id: req.params.id});
-        res.render('show.ejs', {
+        res.render('./recipes/show.ejs', {
             recipe: thisRecipe[0]
         });
     } catch(err) {
