@@ -44,7 +44,7 @@
         Images: <br>
         <% for(let i = 0; i < recipe.images.length; i++) { %>
             <input class="form-control" type="text" name="images" id="images" value="<%= recipe.images[i]%>">           
-            <img class="images" src="<%= recipe.images[i] %>" alt="image of <%= recipe.name %>"><br><br>
+            <img class="recipePic" src="<%= recipe.images[i] %>" alt="image of <%= recipe.name %>"><br><br>
         <% } %>
     </div>
     <button type="button" id="addImage">Add URL</button><br><br>

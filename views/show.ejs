@@ -22,16 +22,18 @@
                     </li>
                     <% } %>
             </ol><br>
-            <a href="/book/<%= recipe.category %>/<%= recipe.id %>/edit">Edit this Recipe</a>
+            <a href="/book/<%= recipe.category %>/<%= recipe.id %>/edit">Edit this Recipe</a><br><br>
             <form action="/book/<%=recipe.category%>/<%=recipe.id%>?_method=DELETE" method="POST">
-                <input type="submit" value="Delete">
-            </form>
+                <input type="submit" value="Delete this Recipe">
+            </form><br>
         </div>
 
         <div>
-            <% for(let i=0; i < recipe.images.length; i++) { %>
-                <img src="<%= recipe.images[i] %>" alt="image of <%= recipe.name %>" class="recipePic">
-                <% } %>
+            <div id="pictures">
+                <% for(let i=0; i < recipe.images.length; i++) { %>
+                    <img src="<%= recipe.images[i] %>" alt="image of <%= recipe.name %>" class="recipePic">
+                    <% } %>
+            </div>
                     <ul>
                         Tags:
                         <% for(let i=0; i < recipe.tags.length; i++) { %>
