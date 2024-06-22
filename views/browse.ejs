@@ -10,11 +10,11 @@
 
     <h1><%= cat %></h1>
 
-<div>
+<div class="browse">
 <% for(let i = 0; i < recipes.length; i++) { %>
     <div>
         <h5><a href="/book/<%= recipes[i].category %>/<%= recipes[i].id %>"><%= recipes[i].name %></a></h5>
-        <img src="<%= recipes[i].images[0] %>" alt="image of <%= recipes[i].name %>">
+        <img class="images" src="<%= recipes[i].images[0] %>" alt="image of <%= recipes[i].name %>">
     </div>
 <% } %>
 </div>

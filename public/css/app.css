@@ -12,9 +12,18 @@
 
 .nav {
     background-color: rgb(55, 5, 32);
-    width: 150px;
+    width: 50px;
     height: 100vh;
     position: fixed;
+    overflow: hidden;
+}
+
+#sidebarItems {
+    visibility: hidden;
+}
+
+.sidebarButton {
+    font-size: 30px;
 }
 
 a {
@@ -40,7 +49,7 @@ a {
 }
 
 main {
-    margin-left: 150px;
+    margin-left: 55px;
     padding: 5px;
 }
 
@@ -65,3 +74,8 @@ main {
 .nav-link {
     color: rgb(149, 149, 73);
 }
+
+.images {
+    max-width: 300px;
+}
+
