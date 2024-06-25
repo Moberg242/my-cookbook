@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
     try {
         const allItems = await List.find();
         res.render('./list/index.ejs', {
-            items: allItems
+            items: allItems[0]
         });
     } catch (err) {
         console.log(err.message);
@@ -35,15 +35,16 @@ router.get('/', async (req, res) => {
 
 
 //UPDATE
-// router.post('/list/edit', async (req, res) => {
-//     try {
-//         console.log(req.body);
-//         res.redirect('/list');
-//     } catch(err) {
-//         console.log(err.message);
-//         res.send('error: ' + err.message);
-//     }
-// });
+router.put('/edit/:id', async (req, res) => {
+    try {
+        let updatedItems = await List.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        console.log(updatedItems);
+        res.redirect('/list');
+    } catch(err) {
+        console.log(err.message);
+        res.send('error: ' + err.message);
+    }
+});
 
 
 //CREATE
@@ -52,9 +53,10 @@ router.get('/', async (req, res) => {
 // EDIT
 router.get('/edit', async (req, res) => {
     try {
-        const allItems = await List.find().sort({item: 1});
+        const allItems = await List.find();
+        console.log(allItems);
         res.render('./list/edit.ejs', {
-            items: allItems
+            items: allItems[0]
         });
     } catch(err) {
         console.log(err.message);

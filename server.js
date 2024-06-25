@@ -32,3 +32,7 @@ connectToMongo();
 app.listen(port, ()=> {
     console.log(`listening on port: ${port}`);
 });
+
+//project2: https://git.generalassemb.ly/SEBPT-EC-319/project-2
+//last commit: "shopping list collection created, index and edit views rendered"
+

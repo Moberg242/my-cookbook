@@ -1,8 +1,5 @@
 <script>
-    const addIngredientButton = document.getElementById('addIngredient');
-    const addStepButton = document.getElementById('addStep');
-    const addImgButton = document.getElementById('addImage');
-    const addTagButton = document.getElementById('addTag');
+
 
     let nav = 1;
     function openNav() {
@@ -24,6 +21,33 @@
         newInput.innerHTML = '<input class="form-control" type="text" name="ingredients" id="ingredients">';
         container.appendChild(newInput);
     }
+
+    function addNewItem() {
+        const container = document.getElementById('shoppingListTable');
+        const newInput = document.createElement('tr');
+        newInput.innerHTML = `
+            <tr>
+                <form action="/list/edit" method="POST">
+                    <td><input type="text" name="quantity"></td>
+                    <td><input type="text" name="measurement"></td>
+                    <td><input type="text" name="item"></td>
+                </form>
+                </tr>`;
+        container.appendChild(newInput);
+    }
+
+    function deleteOneItem(i) {
+        let id = parseInt(i);
+        const container = document.getElementById('shoppingListTable');
+        const itemToDelete = document.getElementById(id);
+        container.removeChild(itemToDelete);
+    }
+
+    const addIngredientButton = document.getElementById('addIngredient');
+    const addStepButton = document.getElementById('addStep');
+    const addImgButton = document.getElementById('addImage');
+    const addTagButton = document.getElementById('addTag');
+
     addIngredientButton.addEventListener('click', () => {
         const container = document.getElementById('ingredients');
         const newInput = document.createElement('div');

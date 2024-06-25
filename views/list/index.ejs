@@ -5,11 +5,12 @@
 <h1>My Shopping List</h1>
 
 <ul class="list-group">
-<% for(let i = 0; i < items.length; i++) { %>
+<% for(let i = 0; i < items.item.length; i++) { %>
     <li class="list-group-item">
-        <%= items[i].quantity + ' ' + items[i].measurement + ' ' + items[i].item %>
+        <%= items.quantity[i] + ' ' + items.measurement[i] + ' ' + items.item[i] %>
     </li>
 <% } %>
+
 </ul><br><br>
 <a href="/list/edit">Edit List</a>
 </main>
