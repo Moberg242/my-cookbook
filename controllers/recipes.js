@@ -81,7 +81,7 @@ router.get('/:category/:id/edit', async (req, res) => {
 //SHOW
 router.post('/search', async (req, res) => {
     try {
-        const results = await Recipes.find({$or: [{tags: req.body.searchBar}, {name: {$options: 'i', $regex: req.body.searchBar}}, {ingredients: req.body.searchBar}]}).sort({name: 1});
+        const results = await Recipes.find({$or: [{tags: {$options: 'i', $regex: req.body.searchBar}}, {name: {$options: 'i', $regex: req.body.searchBar}}, {ingredients: {$options: 'i', $regex: req.body.searchBar}}]}).sort({name: 1});
         res.render('./recipes/search.ejs', {
             results: results,
             entry: req.body.searchBar

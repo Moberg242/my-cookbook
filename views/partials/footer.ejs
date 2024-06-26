@@ -14,6 +14,13 @@
     }
 
     //editing recipes
+    function doYouWantToDelete() {
+        console.log('are you sure?');
+        alert('Are you sure you want to delete this recipe? Press "delete" to confirm');
+        document.getElementById('deleteOption').style.visibility = 'hidden';
+        document.getElementById('realDeleteButton').style.visibility = 'visible';
+    }
+
     function addIngredients() {
         const container = document.getElementById('ingredients');
         const newInput = document.createElement('div');
