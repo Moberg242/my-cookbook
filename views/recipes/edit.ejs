@@ -30,7 +30,7 @@
             <input class="form-control" type="text" name="ingredients" id="ingredients" value="<%= recipe.ingredients[i] %>">
         <% } %>
     </div>
-    <button type="button" id="addIngredient" onclick="addIngredient()">Add Ingredient</button><br><br>
+    <button type="button" id="addIngredient" onclick="addIngredients()">Add Ingredient</button><br><br>
 
     <div id="steps">
         Instructions: <br>
@@ -38,7 +38,7 @@
             <input class="form-control" type="text" name="steps" id="steps" value="<%= recipe.steps[i] %>">
             <% } %>
     </div>
-    <button type="button" id="addStep">Add Step</button><br><br>
+    <button type="button" id="addStep" onclick="addSteps()">Add Step</button><br><br>
 
     <div id="images">
         Images: <br>
@@ -47,7 +47,7 @@
             <img class="recipePic" src="<%= recipe.images[i] %>" alt="image of <%= recipe.name %>"><br><br>
         <% } %>
     </div>
-    <button type="button" id="addImage">Add URL</button><br><br>
+    <button type="button" id="addImage" onclick="addImg()">Add URL</button><br><br>
 
     <div id="tags">
         Tags: <br>
@@ -55,7 +55,7 @@
             <input class="form-control" type="text" name="tags" id="tags" value="<%= recipe.tags[i] %>">
         <% } %>
     </div>
-    <button type="button" id="addTag">Add Tag</button><br><br>
+    <button type="button" id="addTag" onclick="addTags()">Add Tag</button><br><br>
 
     <div><input type="submit" value="Update Recipe"></div>
     

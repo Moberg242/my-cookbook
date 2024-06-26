@@ -1,6 +1,4 @@
 <script>
-
-
     let nav = 1;
     function openNav() {
         const sidebar = document.querySelector('.nav');
@@ -15,13 +13,36 @@
         nav++;
     }
 
-    function addIngredient() {
+    //editing recipes
+    function addIngredients() {
         const container = document.getElementById('ingredients');
         const newInput = document.createElement('div');
         newInput.innerHTML = '<input class="form-control" type="text" name="ingredients" id="ingredients">';
         container.appendChild(newInput);
     }
 
+    function addSteps() {
+        const container = document.getElementById('steps');
+        const newInput = document.createElement('div');
+        newInput.innerHTML = '<input class="form-control" type="text" name="steps" id="steps">';
+        container.appendChild(newInput);
+    }
+
+    function addImg() {
+        const container = document.getElementById('images');
+        const newInput = document.createElement('div');
+        newInput.innerHTML = '<input class="form-control" type="text" name="images" id="images">';
+        container.appendChild(newInput);
+    };
+
+    function addTags() {
+        const container = document.getElementById('tags');
+        const newInput = document.createElement('div');
+        newInput.innerHTML = '<input class="form-control" type="text" name="tags" id="tags">';
+        container.appendChild(newInput);
+    }
+
+    //editing shopping list
     function addNewItem() {
         const container = document.getElementById('shoppingListTable');
         const newInput = document.createElement('tr');
@@ -42,38 +63,5 @@
         const itemToDelete = document.getElementById(id);
         container.removeChild(itemToDelete);
     }
-
-    const addIngredientButton = document.getElementById('addIngredient');
-    const addStepButton = document.getElementById('addStep');
-    const addImgButton = document.getElementById('addImage');
-    const addTagButton = document.getElementById('addTag');
-
-    addIngredientButton.addEventListener('click', () => {
-        const container = document.getElementById('ingredients');
-        const newInput = document.createElement('div');
-        newInput.innerHTML = '<input class="form-control" type="text" name="ingredients" id="ingredients">';
-        container.appendChild(newInput);
-    });
-
-    addStepButton.addEventListener('click', () => {
-        const container = document.getElementById('steps');
-        const newInput = document.createElement('div');
-        newInput.innerHTML = '<input class="form-control" type="text" name="steps" id="steps">';
-        container.appendChild(newInput);
-    });
-
-    addImgButton.addEventListener('click', () => {
-        const container = document.getElementById('images');
-        const newInput = document.createElement('div');
-        newInput.innerHTML = '<input class="form-control" type="text" name="images" id="images">';
-        container.appendChild(newInput);
-    });
-
-    addTagButton.addEventListener('click', () => {
-        const container = document.getElementById('tags');
-        const newInput = document.createElement('div');
-        newInput.innerHTML = '<input class="form-control" type="text" name="tags" id="tags">';
-        container.appendChild(newInput);
-    });
 
 </script>

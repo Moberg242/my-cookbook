@@ -4,9 +4,10 @@ const methodOverride = require('method-override');
 const recipesController = require('./controllers/recipes.js');
 const shoppingListController = require('./controllers/shoppingList.js');
 const app = express();
+require('dotenv').config();
 const port = process.env.PORT || 3000;
 
-const mongoURI = 'mongodb+srv://moberg242:mongoDB@sebpt-319.vz9uiro.mongodb.net/recipes';
+const mongoURI = process.env.MONGOURI;
 
 
 //middleware
