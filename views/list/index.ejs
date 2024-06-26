@@ -4,9 +4,10 @@
 <main>
 <h1>My Shopping List</h1>
 
-<ul class="list-group">
+<ul class="list-group" id="checkShoppingList">
 <% for(let i = 0; i < items.item.length; i++) { %>
-    <li class="list-group-item">
+    <li class="list-group-item" id="<%=i%>">
+        <input type="checkbox" onclick="checkOffItem('<%= i %>')">
         <%= items.quantity[i] + ' ' + items.measurement[i] + ' ' + items.item[i] %>
     </li>
 <% } %>

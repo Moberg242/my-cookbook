@@ -1,0 +1,44 @@
+<%- include('../partials/head.ejs') %>
+
+
+<main>
+    <h1>Add To My Shopping List</h1>
+
+    <form action="/list/add/<%= id %>?_method=PUT" method="POST">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Quantity</th>
+                <th scope="col">Measurement</th>
+                <th scope="col">Item</th>
+            </tr>
+        </thead>
+        <tbody id="shoppingListTable">
+            <% for(let i = 0; i < ingredients.length; i++) { 
+                let arr = ingredients[i].split(' ');
+                let quantity = arr[0];
+                let measurement = arr[1];
+                arr.splice(0,2);
+                let item = arr.join(' '); %>
+                <tr id="<%= i %>">
+                    <td><input type="text" name="quantity" value="<%= quantity %>"></td>
+                    <td><input type="text" name="measurement" value="<%= measurement %>"></td>
+                    <td><input type="text" name="item" value="<%= item %>"></td>
+                    <td>
+                        <button type="button" id="deleteItem" onclick="deleteOneItem('<%= i %>')">Delete</button>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <input type="submit" value="Add">
+</form>
+
+
+</main>
+
+<%- include('../partials/footer.ejs') %>
+
+</body>
+
+</html>

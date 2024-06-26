@@ -23,6 +23,7 @@
                     <% } %>
             </ol><br>
             <a href="/book/<%= recipe.category %>/<%= recipe.id %>/edit">Edit this Recipe</a><br><br>
+            <a href="/list/add/<%= recipe.id %>">Add ingredients to shopping list</a><br><br>
             <form action="/book/<%=recipe.category%>/<%=recipe.id%>?_method=DELETE" method="POST">
                 <input type="submit" value="Delete this Recipe">
             </form><br>
