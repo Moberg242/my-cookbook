@@ -79,6 +79,7 @@ router.get('/:category/:id/edit', async (req, res) => {
 });
 
 //SHOW
+//Search list
 router.post('/search', async (req, res) => {
     try {
         const results = await Recipes.find({$or: [{tags: {$options: 'i', $regex: req.body.searchBar}}, {name: {$options: 'i', $regex: req.body.searchBar}}, {ingredients: {$options: 'i', $regex: req.body.searchBar}}]}).sort({name: 1});
@@ -92,6 +93,7 @@ router.post('/search', async (req, res) => {
     }
 });
 
+//browse by category
 router.get('/:category', async (req, res) => {
     try {
         const thisCategory = await Recipes.find({category: req.params.category}).sort({name: 1});
@@ -103,6 +105,8 @@ router.get('/:category', async (req, res) => {
         console.log(err.message);
     }
 });
+
+//show recipe
 router.get('/:category/:id', async(req, res) => {
     try {
         const thisRecipe = await Recipes.find({_id: req.params.id});
