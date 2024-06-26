@@ -1,7 +1,7 @@
 # My Cookbook
 
 ## Overview
-This is a site to store your favorite recipes. Each entry is fully customizable and you can add/remove recipes as you please! 
+This is a site to store your favorite recipes and create shopping lists. Each entry is fully customizable and you can add/edit/remove recipes as you please! 
 
 ### Go to the site here:
 [LINK](https://my-cookbook-mvev.onrender.com/book)
@@ -18,6 +18,5 @@ This is a site to store your favorite recipes. Each entry is fully customizable 
 * MVC file structure
 
 ## Icebox Features:
-* Ability to add a recipe from an outside source
-* Ability to add ingredients to your "shopping cart"
+* Ability to upload a recipe from an outside source
 * Ability to upload files rather than image links
